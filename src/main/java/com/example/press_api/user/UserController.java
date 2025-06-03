@@ -1,17 +1,15 @@
-package com.example.press_api.api.user;
+package com.example.press_api.user;
 
-import com.example.press_api.api.validation.Validation;
+import com.example.press_api.validation.Validation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 // NOTE I need to change all return types in these methods to be RESTful.
 
+@CrossOrigin(origins = "http://localhost:3000") // NOTE All controllers will need this. Can I make this better with OOP?
+@RequestMapping("/user")
 @RestController
 public class UserController {
-  /* NOTE Is this redundant code? Can this be improved with inheritance? All controllers will
-  *  need a path variable. */
-  private static final String PATH = "/user";
-
   private final UserService userService;
 
   @Autowired
@@ -19,13 +17,13 @@ public class UserController {
     this.userService = userService;
   }
 
-  @GetMapping(PATH + "/{id}")
+  @GetMapping("/{id}")
   public String getUser(@PathVariable Integer id) {
     User returnedUser = userService.getUser(id);
     return returnedUser.toString();
   }
 
-  @PostMapping(PATH + "/create")
+  @PostMapping("/create")
   public String createUser(
           @RequestParam String username,
           @RequestParam String password

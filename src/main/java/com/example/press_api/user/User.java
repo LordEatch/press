@@ -1,6 +1,6 @@
-package com.example.press_api.api.user;
+package com.example.press_api.user;
 
-import com.example.press_api.api.validation.Validation;
+import com.example.press_api.validation.Validation;
 import jakarta.persistence.*;
 
 @Entity

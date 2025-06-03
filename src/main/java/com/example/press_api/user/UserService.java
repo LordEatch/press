@@ -1,4 +1,4 @@
-package com.example.press_api.api.user;
+package com.example.press_api.user;
 
 import org.springframework.stereotype.Service;
 
