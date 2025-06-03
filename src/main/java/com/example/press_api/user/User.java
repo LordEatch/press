@@ -12,6 +12,16 @@ public class User {
   private String passwordHash;
   private boolean darkMode;
 
+  public Integer getId() {
+    return this.id;
+  }
+  public String getUsername() {
+    return username;
+  }
+  public boolean isDarkMode() {
+    return darkMode;
+  }
+
   public User() {
   }
 
@@ -31,14 +41,6 @@ public class User {
     this.username = username;
     this.passwordHash = generatePasswordHash(password);
     this.darkMode = false;
-  }
-
-  public String toString() {
-    return "id: " + this.id + '|' + "username: " + this.username + '|' + "password-hash: " + this.passwordHash + '|' + "dark-mode: " + this.darkMode;
-  }
-
-  public Integer getId() {
-    return this.id;
   }
 
   public boolean validatePasswordHash(String attemptedPasswordHash) {
