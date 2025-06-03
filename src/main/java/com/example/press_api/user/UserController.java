@@ -1,7 +1,13 @@
 package com.example.press_api.user;
 
 import com.example.press_api.validation.Validation;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ProblemDetail;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.*;
 
 // NOTE I need to change all return types in these methods to be RESTful.
@@ -18,22 +24,23 @@ public class UserController {
   }
 
   @GetMapping("/{id}")
-  public String getUser(@PathVariable Integer id) {
-    User returnedUser = userService.getUser(id);
-    return returnedUser.toString();
+  public ResponseEntity<User> getUser(@PathVariable Integer id) {
+    User user = userService.getUser(id);
+    return new ResponseEntity<>(user, HttpStatus.OK);
   }
 
   @PostMapping("/create")
-  public String createUser(
+  public ResponseEntity<User> createUser(
           @RequestParam String username,
           @RequestParam String password
   ) throws Exception {
     if (Validation.validateUsernameFormat(username) && Validation.validatePasswordFormat(password)) {
       User newUser = new User(username, password);
       userService.createUser(newUser);
-      return "User inserted with id " + newUser.getId() + ".";
+      return new ResponseEntity<>(newUser, HttpStatus.OK);
     } else {
-      return "User not inserted. Incorrect username or password format.";
+      // NOTE I need to change this to return an invalid input format message with the response!
+      return new ResponseEntity<>(new User(), HttpStatus.BAD_REQUEST);
     }
   }
 }
