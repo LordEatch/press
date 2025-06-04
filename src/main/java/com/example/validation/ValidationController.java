@@ -1,4 +1,4 @@
-package com.example.press_api.validation;
+package com.example.validation;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;

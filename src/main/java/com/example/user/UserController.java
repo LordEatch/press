@@ -1,13 +1,9 @@
-package com.example.press_api.user;
+package com.example.user;
 
-import com.example.press_api.validation.Validation;
-import org.apache.coyote.Response;
+import com.example.validation.Validation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.*;
 
 // NOTE I need to change all return types in these methods to be RESTful.

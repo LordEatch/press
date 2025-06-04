@@ -1,6 +1,5 @@
-package com.example.press_api.user;
+package com.example.user;
 
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 @Service

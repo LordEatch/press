@@ -1,4 +1,4 @@
-package com.example.press_api.validation;
+package com.example.validation;
 
 public class Validation {
   // NOTE These are public because I may need to access them when displaying error messages to users creating an account.
